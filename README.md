@@ -1,0 +1,1 @@
+# sveltekit-cordova-adapter
