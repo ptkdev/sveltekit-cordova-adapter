@@ -124,7 +124,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`
       HTML_assets.forEach(async (path) => {
         let href = "/" + path;
 
-        let regex_input = new RegExp(`[^.]/_app/immutable`, "g");
+        let regex_input = new RegExp(`[^.](/_app/immutable)`, "g");
         let regex_replace = `"./_app/immutable`;
 
         await replace.sync({
