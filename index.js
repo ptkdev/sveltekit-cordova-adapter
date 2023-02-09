@@ -148,7 +148,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`
         `http-equiv="content-security-policy" content=""`,
         "g"
       );
-      regex_replace = `http-equiv="content-security-policy" content="default-src 'self' 'http://localhost:5000' data: gap: 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"`;
+      regex_replace = `http-equiv="content-security-policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"`;
 
       await replace.sync({
         files: [pages + "/**/*.html"],
