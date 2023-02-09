@@ -135,7 +135,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`
       });
 
       let regex_input = new RegExp(`</body>`, "g");
-      let regex_replace = `<script defer src="cordova.js"></script></body>`;
+      let regex_replace = `<script src="cordova.js"></script></body>`;
 
       await replace.sync({
         files: [pages + "/**/*.html"],
@@ -147,7 +147,11 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`
         `http-equiv="content-security-policy" content=""`,
         "g"
       );
-      regex_replace = `http-equiv="content-security-policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"`;
+      const policy =
+        "default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;";
+      regex_replace = `http-equiv="content-security-policy" content="${
+        options?.policy ? options.policy : policy
+      }"`;
 
       await replace.sync({
         files: [pages + "/**/*.html"],
