@@ -123,10 +123,9 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`
 
       HTML_assets.forEach(async (path) => {
         let href = "/" + path;
-        console.log(href);
 
         let regex_input = new RegExp(`[^.]/_app/immutable`, "g");
-        let regex_replace = `./_app/immutable`;
+        let regex_replace = `"./_app/immutable`;
 
         await replace.sync({
           files: [pages + "/**/*"],
@@ -148,7 +147,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`
         `http-equiv="content-security-policy" content=""`,
         "g"
       );
-      regex_replace = `http-equiv="content-security-policy" content="default-src 'self' 'http://localhost:5000' data: gap: 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"`;
+      regex_replace = `http-equiv="content-security-policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"`;
 
       await replace.sync({
         files: [pages + "/**/*.html"],
