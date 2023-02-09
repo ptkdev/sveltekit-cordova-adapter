@@ -159,6 +159,35 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`
         processor: (input) => input.replace(regex_input, regex_replace),
       });
 
+      regex_input = new RegExp(
+        `name="viewport" content="width=device-width"`,
+        "g"
+      );
+      const viewport =
+        "width=device-width, initial-scale=1.0, viewport-fit=cover";
+      regex_replace = `name="viewport" content="${
+        options?.viewport ? options.viewport : viewport
+      }"`;
+
+      await replace.sync({
+        files: [pages + "/**/*.html"],
+        // @ts-ignore
+        processor: (input) => input.replace(regex_input, regex_replace),
+      });
+
+      options?.safearea ?? true;
+
+      if (options?.safearea) {
+        regex_input = new RegExp(`</head>`, "g");
+        regex_replace = `<style>body { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }</style></head>`;
+
+        await replace.sync({
+          files: [pages + "/**/*.html"],
+          // @ts-ignore
+          processor: (input) => input.replace(regex_input, regex_replace),
+        });
+      }
+
       if (fallback) {
         builder.generateFallback(path.join(pages, fallback));
       }
