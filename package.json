@@ -3,16 +3,16 @@
 	"displayName": "SvelteKit Adapter for Mobile Apps with Cordova or Ionic Capacitor",
 	"description": "Adapter for SvelteKit apps that prerenders your entire site as a collection of static files for use with Cordova or Ionic Capacitor (android/ios)",
 	"version": "0.3.0-nightly.0",
-	"main": "./index.js",
+	"main": "./app/adapter/index.js",
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./index.d.ts",
-			"import": "./index.js"
+			"types": "./app/adapter/index.d.ts",
+			"import": "./app/adapter/index.js"
 		},
 		"./package.json": "./package.json"
 	},
-	"types": "index.d.ts",
+	"types": "./app/adapter/index.d.ts",
 	"publishConfig": {
 		"access": "public"
 	},

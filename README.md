@@ -61,7 +61,7 @@ import adapter from "@ptkdev/sveltekit-cordova-adapter";
 const config = {
 	kit: {
 		adapter: adapter({
-			strict: true,
+			strict: false,
 			platform: "cordova",
 		}),
 	},
@@ -86,7 +86,7 @@ import adapter from "@ptkdev/sveltekit-cordova-adapter";
 const config = {
 	kit: {
 		adapter: adapter({
-			strict: true,
+			strict: false,
 			platform: "capacitor",
 		}),
 	},
@@ -100,19 +100,19 @@ const config = {
 
 ## 🧰 Options
 
-The `adatper({ options })` parameters list:
+The `adapter({ options })` parameters list:
 
-| Parameter   | Description                                                     | Values                  | Default value                                                                                                                                          | Available since |
-| ----------- | --------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |
-| pages       | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                                                                                                                        |                 |
-| assets      | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                                                                                                                        |                 |
-| fallback    | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                                                                                                                        |                 |
-| precompress | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                                                                                                                        |                 |
-| strict      | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                                                                                                                        |                 |
-| policy      | Set meta-tag `content-security-policy`                          | String                  | `default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; 'self'` | v0.2.0          |
-| viewport    | Set meta-tag `viewport`                                         | String                  | `width=device-width, initial-scale=1.0, viewport-fit=cover`                                                                                            | v0.2.0          |
-| safearea    | Set css safe area for iphone with notch or dynamic island       | `true` / `false`        | `true`                                                                                                                                                 | v0.2.0          |
-| platform    | Compile optimization for cordova or capacitor                   | `cordova` / `capacitor` | `cordova`                                                                                                                                              | v0.2.0          |
+| Parameter   | Description                                                     | Values                  | Default value                                               | Available since |
+| ----------- | --------------------------------------------------------------- | ----------------------- | ----------------------------------------------------------- | --------------- |
+| pages       | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                             |                 |
+| assets      | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                             |                 |
+| fallback    | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                             |                 |
+| precompress | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                             |                 |
+| strict      | See official [docs](https://kit.svelte.dev/docs/adapter-static) |                         |                                                             |                 |
+| policy      | Set meta-tag `content-security-policy`                          | String                  | Empty                                                       | v0.2.0          |
+| viewport    | Set meta-tag `viewport`                                         | String                  | `width=device-width, initial-scale=1.0, viewport-fit=cover` | v0.2.0          |
+| safearea    | Set css safe area for iphone with notch or dynamic island       | `true` / `false`        | `true`                                                      | v0.2.0          |
+| platform    | Compile optimization for cordova or capacitor                   | `cordova` / `capacitor` | `cordova`                                                   | v0.2.0          |
 
 #### Example:
 
@@ -120,8 +120,8 @@ The `adatper({ options })` parameters list:
 const config = {
 	kit: {
 		adapter: adapter({
-			strict: true,
-			policy: "",
+			strict: false,
+			policy: "default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;",
 			viewport: `width=device-width`,
 		}),
 	},

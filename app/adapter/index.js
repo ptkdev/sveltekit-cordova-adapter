@@ -115,14 +115,13 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`,
 				filesOnly: true,
 			});
 
-			HTML_assets.forEach(async (path) => {
-				let regex_input = new RegExp(`[^.](/_app/immutable)`, "g");
-				let regex_replace = `./_app/immutable`;
+			HTML_assets.forEach(async () => {
+				let regex_input = new RegExp(`([^.])(/_app/immutable)`, "g");
 
 				await replace.sync({
 					files: [`${pages}/**/*`],
 					// @ts-ignore
-					processor: (input) => input.replace(regex_input, regex_replace),
+					processor: (input) => input.replace(regex_input, "$1.$2"),
 				});
 			});
 
@@ -136,8 +135,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`,
 			});
 
 			regex_input = new RegExp(`http-equiv="content-security-policy" content=""`, "g");
-			const policy =
-				"default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;";
+			const policy = "";
 			regex_replace = `http-equiv="content-security-policy" content="${
 				options?.policy ? options.policy : policy
 			}"`;
@@ -158,7 +156,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`,
 				processor: (input) => input.replace(regex_input, regex_replace),
 			});
 
-			options?.safearea ?? true;
+			options?.safearea === undefined ? (options.safearea = true) : "";
 
 			if (options?.safearea) {
 				regex_input = new RegExp(`</head>`, "g");

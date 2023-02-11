@@ -1,3 +1,8 @@
+# v0.3.0 (February 11, 2023)
+
+-   New: `/examples` folder
+-   Fix: HTML Regex
+
 # v0.2.0 (February 11, 2023)
 
 -   New Options: `viewport`

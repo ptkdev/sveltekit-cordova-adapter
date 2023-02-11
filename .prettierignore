@@ -1,4 +1,5 @@
 /dist
 /build
 /node_modules
+/examples
 package-lock.json
