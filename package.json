@@ -33,7 +33,7 @@
 		"node": ">=14.0.0"
 	},
 	"scripts": {
-		"build": "cp ./app/**/* . -r",
+		"build": "echo \"Compiling...\"",
 		"release": "npm run build",
 		"test": "jest app",
 		"docs": "git submodule update --recursive && markserv ./README.md",
