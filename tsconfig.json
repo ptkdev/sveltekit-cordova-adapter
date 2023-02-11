@@ -4,14 +4,13 @@
 		"checkJs": true,
 		"noEmit": true,
 		"noImplicitAny": true,
-		"module": "es2022",
+		"module": "esnext",
 		"target": "es2022",
 		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
 		"allowSyntheticDefaultImports": true,
-		"baseUrl": ".",
-		"paths": {
-			"@sveltejs/kit": ["../kit/types/index"]
-		}
+		"baseUrl": "."
 	},
-	"include": ["index.js"]
+	"include": ["app/adapter/index.js", "index.js"]
 }
