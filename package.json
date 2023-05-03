@@ -2,7 +2,7 @@
 	"name": "@ptkdev/sveltekit-cordova-adapter",
 	"displayName": "SvelteKit Adapter for Mobile Apps with Cordova or Ionic Capacitor",
 	"description": "Adapter for SvelteKit apps that prerenders your entire site as a collection of static files for use with Cordova or Ionic Capacitor (android/ios)",
-	"version": "0.3.2-nightly.78",
+	"version": "0.3.2-nightly.79",
 	"main": "./app/adapter/index.js",
 	"type": "module",
 	"exports": {
