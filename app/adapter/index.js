@@ -108,7 +108,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`,
 				});
 			});
 
-			const HTML_assets = await glob("_app/**/*", {
+			const HTML_assets = await glob(builder.getAppPath()+"/**/*", {
 				cwd: pages,
 				dot: true,
 				absolute: false,
@@ -116,7 +116,7 @@ See https://kit.svelte.dev/docs/page-options#prerender for more details`,
 			});
 
 			HTML_assets.forEach(async () => {
-				let regex_input = new RegExp(`([^.])(/_app/immutable)`, "g");
+				let regex_input = new RegExp(`([^.])(/${builder.getAppPath()}/immutable)`, "g");
 
 				await replace.sync({
 					files: [`${pages}/**/*`],
